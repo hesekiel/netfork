@@ -1,0 +1,39 @@
+Access-Control-Allow-Origin: *
+Accept-Ranges: bytes
+Age: 12
+Allow: GET, HEAD
+Cache-Control: max-age=3600
+Connection: close
+Content-Encoding: gzip
+Content-Language: da
+Content-Length: 348
+Content-Location: /index.htm
+Content-Disposition: attachment; filename="fname.ext"
+Content-Range: bytes 21010-47021/47022
+Content-Type: text/html; charset=utf-8
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Expires: Thu, 01 Dec 1994 16:00:00 GMT
+Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+Link: </feed>; rel="alternate"
+Location: http://www.w.org/p/P.html
+Pragma: no-cache
+Proxy-Authenticate: Basic
+Refresh: 5; url=http://www.w.org/p/P.html
+Retry-After: 120
+Server: Apache/2.4.1 (Unix)
+Set-Cookie: PREF=ID=fsdgi9494:TR=HHihih; Path=/; Expires=Monday, 03-Jan-02 12:12:12 GMT; Domain=.http://s.com
+Status: 200 OK
+Strict-Transport-Security: max-age=16070400; includeSubDomains
+Trailer: Max-Forwards
+Transfer-Encoding: chunked
+Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+Vary: *
+Via: 1.0 fred, 1.1 e.com (Apache/1.1)
+Warning: 199 M
+WWW-Authenticate: Basic
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+X-WebKit-CSP: default-src 'self'
+X-Content-Type-Options: nosniff
+X-Powered-By: PHP/5.4.0
+X-UA-Compatible: IE=EmulateIE7

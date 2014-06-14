@@ -1,0 +1,14 @@
+* CAPABILITY IMAP4 IMAP4rev1 IDLE LITERAL+ LOGIN-REFERRALS MAILBOX-REFERRALS NAMESPACE AUTH=NTLM
+* OK Microsoft Exchange IMAP4rev1 server version 5.5.2650.23 (umr-mail02) ready
+* NO Disk is 98% full, please delete unnecessary data
+* BAD Disk crash!
+* PREAUTH IMAP4rev1 server logged in as Sm!th
+* BYE Autologout; idle for too long
+* LIST (\Noselect) "/" ~/Mail/foo
+* LSUB () "." #news.comp.mail.misc
+* STATUS blurdybloop (MESSAGES 231 UIDNEXT 44292)
+* SEARCH 2 3 6
+* FLAGS (\Answered \Flagged \Deleted \Seen \Draft)
+* 23 EXISTS
+* 5 RECENT
+* 18 EXISTS\r\n* FLAGS (\Answered \Flagged \Deleted \Seen \Draft)\r\n* 2 RECENT\r\n* OK [UNSEEN 17] Message 17 is the first unseen message\r\n* OK [UIDVALIDITY 3857529045] UIDs valid
