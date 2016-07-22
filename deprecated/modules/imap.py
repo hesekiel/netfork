@@ -11,7 +11,7 @@
 # for the specific language governing permissions and limitations under the License.        #
 #############################################################################################
 
-from modules.functions import *
+from deprecated.modules.functions import *
 
 delimiters = open("fuzzstrings/delimiters", "r")
 numbers = open("fuzzstrings/numberMutators", "r")
