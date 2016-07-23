@@ -3,6 +3,7 @@
 import exceptions
 import socket
 import global_vars
+import MySQLdb
 
 
 class Fuzzable:
@@ -20,6 +21,10 @@ class Server(Fuzzable):
 
 
 class Connection:
+
+    target_addr = None
+    target_proto = None
+    target_port = None
 
     sock = None
 
@@ -49,12 +54,14 @@ class Connection:
         else:
             raise exceptions.UnknownProtocolException("%s is unknown protocol" % host_proto)
 
-        host_addr = self.get_host_addr(host)
+        self.target_addr = self.get_host_addr(host)
 
         self.sock = socket.socket(socket.AF_INET, proto)
         self.sock.bind((global_vars.LOCAL_ADDR, global_vars.LOCAL_PORT))
-        self.sock.connect((host_addr, host_port))
+        self.sock.connect((self.target_addr, host_port))
 
+        self.target_proto = host_proto
+        self.target_port = host_port
         return
 
     def close(self):
@@ -74,11 +81,15 @@ class Connection:
         total_data = []
 
         while True:
-            data = self.sock.recv(8192)
+            try:
+                data = self.sock.recv(8192, socket.MSG_DONTWAIT)
+            except:
+                self.connect(self.target_addr, self.target_proto, self.target_port)
+                return None
             if not data:
                 break
             total_data.append(data)
-
+        self.connect(self.target_addr, self.target_proto, self.target_port)
         return ''.join(total_data)
 
 
@@ -95,5 +106,32 @@ class Logger:
 
 class DatabasePoller:
 
+    host = None
+    user = None
+    passwd = None
+    db = None
+    db_con = None
+    db_cur = None
+
     def __init__(self):
         pass
+
+    # TODO find out how to use password hash
+    def open(self, db, user, passwd, host=global_vars.DB_HOST):
+
+        self.db_con = MySQLdb.connect(host, user, passwd, db)
+        self.db_cur = self.db_con.cursor()
+
+        return 0
+
+    def close(self):
+
+        self.db_con.close()
+
+        return 0
+
+    def execute(self, cmd):
+
+        self.db_cur.execute(cmd)
+
+        return self.db_cur.fetchall()
