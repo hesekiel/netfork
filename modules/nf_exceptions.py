@@ -1,3 +1,4 @@
+# coding=utf-8
 class UnknownProtocolException(Exception):
     def __init__(self, value):
         self.value = value

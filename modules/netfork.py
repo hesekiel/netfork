@@ -1,15 +1,24 @@
+# coding=utf-8
 # 2016, Ivo Nutar
 
-import exceptions
 import socket
-import global_vars
 import MySQLdb
+
+import nf-exceptions
+import global_vars
 
 
 class Fuzzable:
 
+    # TODO ID of last fuzzed element (for 'continue fuzzing' function)
+    last_fuzzed = 0
+
     def __init__(self):
         return
+
+    def fuzz(self):
+        # start fuzzing
+        return 0
 
 
 class Client(Fuzzable):
@@ -94,7 +103,9 @@ class Connection:
 
 
 class Logger:
+    """Class responsible for logging debug and error information about program run.
 
+    """
     logger = None
 
     def __init__(self):
@@ -105,7 +116,9 @@ class Logger:
 
 
 class DatabasePoller:
+    """Class responsible for opening and closing of DB connection and execution of commands.
 
+    """
     host = None
     user = None
     passwd = None
@@ -135,3 +148,16 @@ class DatabasePoller:
         self.db_cur.execute(cmd)
 
         return self.db_cur.fetchall()
+
+
+class Reporter:
+    """Class Reporter contains functionality responsible for reporting results of fuzz test.
+    Possible outputs:
+        HTML
+        Raw txt
+        XML
+        JSON
+
+    """
+    def __init__(self):
+        pass
